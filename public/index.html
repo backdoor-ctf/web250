@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Markdown to HTML Convertor</title>
+        <style rel="stylesheet" type="text/cs" href="//cdnjs.cloudflare.com/ajax/libs/normalize/3.0.0/normalize.min.css"></style>
+    </head>
+    <body>
+        <h1>Markdown to HTML Convertor</h1>
+        <form action="/convert" method="POST">
+            <p>Our special markdown convertor supports yaml-frontmatter and underscore style templating.</p>
+            <textarea name="markdown" rows="30" cols="70" placeholder="Enter markdown here">---
+title: Markdown to HTML Demo
+layout: default
+tags:
+  - hello
+  - world
+---
+##{{title}}
+
+This is normal markdown
+
+This will become **Bold** and _underlined_.
+
+And this is a valid [link][0].
+
+You can use inline variables from the frontmatter as well:
+
+The layout, for eg, is {{layout}} (escaped) or {{{layout}}} (unescaped)
+
+[0]: http://backdoor.cognizance.org.in/
+</textarea>
+            <br>
+            <input type="submit" value="Convert!">
+        </form>
+        <p>Source code for this is available at https://github.com/backdoor-ctf/web250</p>
+    </body>
+</html>
