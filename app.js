@@ -23,7 +23,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
+if(!process.env.FLAG)
+{
+  console.error("No flag in environment");
+  process.exit(1);
+}
 app.get('/', routes.index);
 app.post('/convert', routes.convert)
 http.createServer(app).listen(app.get('port'), function(){
