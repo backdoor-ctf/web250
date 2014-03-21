@@ -19,7 +19,13 @@ exports.convert = function(req, res){
     var end = markdown.indexOf('---',3);
     if(end>-1){
         yaml = markdown.slice(3,end);
-        data = yml.load(yaml);
+        try{
+          data = yml.load(yaml);
+        }
+        catch(e){
+          res.send("Incorrect YAML");
+          return;
+        }
         markdown = markdown.slice(end+3);
     }
     //No closing --- were found
